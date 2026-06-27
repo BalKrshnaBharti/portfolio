@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bal Krishna Bharti | AI Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050a12;
+  --bg2:#0a1628;
+  --card:#0d1f3c;
+  --border:#1e3a5f;
+  --accent:#4f8ef7;
+  --accent2:#7c3aed;
+  --accent3:#06b6d4;
+  --text:#e2e8f0;
+  --muted:#94a3b8;
+  --glass:rgba(13,31,60,0.7);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(5,10,18,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.05em;transition:color 0.3s}
+.nav-links a:hover{color:var(--accent)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(79,142,247,0.12) 0%,transparent 70%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,142,247,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,0.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-block;padding:0.4rem 1rem;background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.3);border-radius:100px;font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:1.5rem}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(1rem,2vw,1.3rem);color:var(--muted);margin-bottom:0.75rem;font-weight:400}
+.hero-tagline{font-size:0.95rem;color:var(--muted);max-width:580px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:0.8rem 2rem;background:linear-gradient(135deg,var(--accent),#3b6fd4);color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;text-decoration:none;font-size:0.9rem;transition:transform 0.2s,box-shadow 0.2s;display:inline-block}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.35)}
+.btn-outline{padding:0.8rem 2rem;background:transparent;color:var(--accent);border:1px solid var(--border);border-radius:8px;font-weight:600;cursor:pointer;text-decoration:none;font-size:0.9rem;transition:all 0.2s;display:inline-block}
+.btn-outline:hover{border-color:var(--accent);background:rgba(79,142,247,0.08)}
+.floating-chips{margin-top:3rem;display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.chip{padding:0.35rem 0.85rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:100px;font-size:0.75rem;color:var(--muted)}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:0.75rem;letter-spacing:0.15em;color:var(--accent);font-weight:600;margin-bottom:0.5rem;text-transform:uppercase}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:1rem;line-height:1.2}
+.section-desc{color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:3rem}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent3));border-radius:2px;margin-bottom:2rem}
+
+/* 3D CARDS */
+.card-3d{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:1.5rem;backdrop-filter:blur(10px);transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;cursor:default}
+.card-3d:hover{transform:translateY(-6px) rotateX(2deg);box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 0 1px rgba(79,142,247,0.15);border-color:rgba(79,142,247,0.3)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-avatar{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:4rem;font-weight:700;font-family:'Space Grotesk',sans-serif;color:#fff;margin:0 auto 1.5rem;box-shadow:0 0 40px rgba(79,142,247,0.3)}
+.about-left{text-align:center}
+.about-right p{color:var(--muted);line-height:1.8;margin-bottom:1rem}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:0.75rem;color:var(--muted);margin-top:0.25rem}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.skill-category h3{font-size:0.85rem;font-weight:600;letter-spacing:0.08em;color:var(--accent3);text-transform:uppercase;margin-bottom:1rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill-tag{padding:0.4rem 0.9rem;background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);border-radius:100px;font-size:0.78rem;color:var(--text);transition:all 0.2s}
+.skill-tag:hover{background:rgba(79,142,247,0.2);border-color:var(--accent);color:var(--accent)}
+
+/* EXPERIENCE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent2),transparent)}
+.timeline-item{position:relative;margin-bottom:2.5rem}
+.timeline-dot{position:absolute;left:-2.45rem;top:0.4rem;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(79,142,247,0.5);border:2px solid var(--bg)}
+.timeline-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.25rem}
+.timeline-role{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.1rem}
+.timeline-date{font-size:0.8rem;color:var(--accent);background:rgba(79,142,247,0.1);padding:0.25rem 0.75rem;border-radius:100px;white-space:nowrap}
+.timeline-company{color:var(--muted);font-size:0.9rem;margin-bottom:0.75rem}
+.timeline-points{list-style:none;padding:0}
+.timeline-points li{color:var(--muted);font-size:0.875rem;line-height:1.7;padding:0.3rem 0;padding-left:1.25rem;position:relative}
+.timeline-points li::before{content:'▸';position:absolute;left:0;color:var(--accent3);font-size:0.75rem}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.project-card{position:relative;overflow:hidden}
+.project-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,142,247,0.05),rgba(124,58,237,0.05));opacity:0;transition:opacity 0.3s;pointer-events:none}
+.project-card:hover::before{opacity:1}
+.project-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem}
+.icon-blue{background:rgba(79,142,247,0.15);border:1px solid rgba(79,142,247,0.3)}
+.icon-purple{background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3)}
+.icon-cyan{background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.3)}
+.project-card h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:0.5rem}
+.project-card p{color:var(--muted);font-size:0.85rem;line-height:1.6;margin-bottom:1rem}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.project-tag{padding:0.25rem 0.65rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:6px;font-size:0.7rem;color:var(--muted)}
+
+/* HACKATHONS */
+.hackathons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.hackathon-card{padding:1.25rem;background:var(--glass);border:1px solid var(--border);border-radius:12px;border-left:3px solid var(--accent);transition:all 0.3s}
+.hackathon-card:hover{border-left-color:var(--accent3);background:rgba(13,31,60,0.9)}
+.hack-org{font-size:0.7rem;color:var(--accent);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem}
+.hack-title{font-size:0.9rem;font-weight:500;margin-bottom:0.5rem}
+.hack-desc{font-size:0.8rem;color:var(--muted);line-height:1.5}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.cert-card{padding:1.25rem;background:var(--glass);border:1px solid var(--border);border-radius:12px;text-align:center;transition:all 0.3s}
+.cert-card:hover{border-color:var(--accent2);transform:translateY(-4px)}
+.cert-icon{font-size:2rem;margin-bottom:0.75rem}
+.cert-name{font-size:0.85rem;font-weight:500;margin-bottom:0.3rem}
+.cert-issuer{font-size:0.75rem;color:var(--muted)}
+
+/* AWARDS */
+.awards-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.award-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--glass);border:1px solid var(--border);border-radius:12px;transition:all 0.3s}
+.award-item:hover{border-color:rgba(250,204,21,0.3);background:rgba(250,204,21,0.03)}
+.award-emoji{font-size:1.5rem;flex-shrink:0}
+.award-name{font-size:0.875rem;font-weight:500}
+.award-date{font-size:0.75rem;color:var(--muted)}
+
+/* EDUCATION */
+.edu-card{display:flex;gap:1.5rem;align-items:flex-start;padding:1.75rem;max-width:600px}
+.edu-icon{width:56px;height:56px;border-radius:12px;background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.3);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.edu-uni{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600}
+.edu-deg{color:var(--muted);font-size:0.875rem;margin-top:0.25rem}
+.edu-cgpa{display:inline-block;margin-top:0.5rem;padding:0.2rem 0.7rem;background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.2);border-radius:100px;font-size:0.75rem;color:var(--accent)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:700px}
+.contact-card{display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--glass);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all 0.3s}
+.contact-card:hover{border-color:var(--accent);transform:translateY(-3px);background:rgba(79,142,247,0.05)}
+.contact-icon{font-size:1.4rem}
+.contact-label{font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+.contact-val{font-size:0.85rem;font-weight:500;word-break:break-all}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:0.8rem}
+
+/* PARTICLES */
+.particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(100vh) translateX(0) scale(0);opacity:0}10%{opacity:1}90%{opacity:0.3}100%{transform:translateY(-10vh) translateX(var(--drift)) scale(1);opacity:0}}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s,transform 0.6s}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:600px){
+  .nav-links{display:none}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">BKB</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#hackathons">Hackathons</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⚡ Available for new opportunities</div>
+    <h1>Bal Krishna <span>Bharti</span></h1>
+    <p class="hero-sub">AI Engineer · Agentic AI · GenAI · DevOps Automation</p>
+    <p class="hero-tagline">Building autonomous AI agents that think, decide, and act — from self-healing CI/CD pipelines to intelligent DevOps systems. 3+ years shaping the future of AI-powered engineering at Infosys.</p>
+    <div class="hero-btns">
+      <a href="#experience" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div class="floating-chips">
+      <span class="chip">LangChain</span>
+      <span class="chip">LangGraph</span>
+      <span class="chip">RAG</span>
+      <span class="chip">FastAPI</span>
+      <span class="chip">GitHub Copilot</span>
+      <span class="chip">Claude API</span>
+      <span class="chip">MCP Server</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container reveal">
+    <p class="section-label">Who I Am</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="about-avatar">BK</div>
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">AI Projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Hackathons</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-right">
+        <p>I'm an experienced AI Engineer specializing in <strong style="color:var(--accent)">Generative AI</strong> and <strong style="color:var(--accent3)">Agentic AI</strong> solutions for DevOps automation, currently working as a Technology Analyst at Infosys.</p>
+        <p>My work centers around building intelligent agents that automate complex engineering workflows — from autonomous pipeline remediation to AI-driven code migration. I work daily with LLMs, RAG pipelines, MCP servers, and modern DevOps tooling to deliver real-world automation solutions.</p>
+        <p>Based in Bhubaneswar, Odisha. Passionate about pushing the boundaries of what AI agents can do in enterprise environments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:rgba(10,22,40,0.6)">
+  <div class="container reveal">
+    <p class="section-label">Technical Skills</p>
+    <h2 class="section-title">My Expertise</h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+      <div class="card-3d skill-category">
+        <h3>🤖 AI & Machine Learning</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Generative AI</span>
+          <span class="skill-tag">Agentic AI</span>
+          <span class="skill-tag">LLMs</span>
+          <span class="skill-tag">RAG</span>
+          <span class="skill-tag">NLU</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">Chatbot Development</span>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">LangGraph</span>
+          <span class="skill-tag">MCP Server</span>
+        </div>
+      </div>
+      <div class="card-3d skill-category">
+        <h3>⚙️ DevOps & Cloud</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">CI/CD Pipelines</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Harness</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">Terraform</span>
+          <span class="skill-tag">Azure</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">Ansible</span>
+        </div>
+      </div>
+      <div class="card-3d skill-category">
+        <h3>🛠️ Tools & Platforms</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">GitHub Copilot</span>
+          <span class="skill-tag">Claude Code</span>
+          <span class="skill-tag">Cursor IDE</span>
+          <span class="skill-tag">Devin AI</span>
+          <span class="skill-tag">Gemini CLI</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Confluence</span>
+          <span class="skill-tag">HuggingFace</span>
+        </div>
+      </div>
+      <div class="card-3d skill-category">
+        <h3>💻 Languages & Frameworks</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">ChromaDB</span>
+          <span class="skill-tag">FAISS</span>
+          <span class="skill-tag">pgvector</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">ReactJS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container reveal">
+    <p class="section-label">Work History</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="divider"></div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="card-3d">
+          <div class="timeline-header">
+            <span class="timeline-role">Technology Analyst</span>
+            <span class="timeline-date">Jan 2026 – Present</span>
+          </div>
+          <div class="timeline-company">Infosys · Northern Trust Engagement</div>
+          <ul class="timeline-points">
+            <li><strong style="color:var(--text)">Self-Healing CI/CD Pipeline:</strong> Built a fully autonomous agentic AI system that detects pipeline failures, analyses logs, determines root cause, and either auto-remediates or escalates via MCP server — minimizing manual intervention.</li>
+            <li><strong style="color:var(--text)">Container Vulnerability Remediation:</strong> AI agent scans Docker images (JFrog + Trivy/Snyk), auto-fixes Dockerfile vulnerabilities, and raises pull requests on GitHub via GitHub MCP server.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--accent2);box-shadow:0 0 12px rgba(124,58,237,0.5)"></div>
+        <div class="card-3d">
+          <div class="timeline-header">
+            <span class="timeline-role">Senior Systems Engineer</span>
+            <span class="timeline-date">Jan 2025 – Jan 2026</span>
+          </div>
+          <div class="timeline-company">Infosys</div>
+          <ul class="timeline-points">
+            <li><strong style="color:var(--text)">ADO-to-GitHub Actions Migration:</strong> Led AI-driven pipeline migration with confidence scoring mechanism — re-running up to 3 times to achieve 90%+ accuracy threshold.</li>
+            <li><strong style="color:var(--text)">Shell-to-Ansible Migration:</strong> Used Gen AI to migrate legacy Shell scripts to Ansible playbooks with reliability testing.</li>
+            <li><strong style="color:var(--text)">Confluence RAG Chatbot:</strong> Built a DevOps troubleshooting chatbot using RAG, similarity scoring, and image-based retrieval from Confluence docs.</li>
+            <li><strong style="color:var(--text)">Harness AIDA:</strong> Explored Harness AI capabilities to streamline SDLC, reducing time and cost.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--accent3);box-shadow:0 0 12px rgba(6,182,212,0.5)"></div>
+        <div class="card-3d">
+          <div class="timeline-header">
+            <span class="timeline-role">System Engineer</span>
+            <span class="timeline-date">Apr 2023 – Dec 2024</span>
+          </div>
+          <div class="timeline-company">Infosys</div>
+          <ul class="timeline-points">
+            <li>Gemini API chatbot with Streamlit UI for lightweight AI interaction.</li>
+            <li>Multi-source semantic search across Confluence, SharePoint, and local repos using embeddings and vector retrieval.</li>
+            <li>Chef-to-Ansible migration automation using AI.</li>
+            <li>Infrastructure-as-Code generation: LLM processes user input → Terraform code → auto GitHub commit → pipeline validation.</li>
+            <li>YAML to Harness YAML code migration for client adoption.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--muted);box-shadow:none"></div>
+        <div class="card-3d">
+          <div class="timeline-header">
+            <span class="timeline-role">System Engineer Trainee</span>
+            <span class="timeline-date">Oct 2022 – Mar 2023</span>
+          </div>
+          <div class="timeline-company">Infosys</div>
+          <ul class="timeline-points">
+            <li>Foundation training in Java, DBMS, and ReactJS.</li>
+            <li>Built "Wanderlust" capstone travel booking app with auth and booking flows.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:rgba(10,22,40,0.6)">
+  <div class="container reveal">
+    <p class="section-label">What I've Built</p>
+    <h2 class="section-title">Key Projects</h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+
+      <div class="card-3d project-card">
+        <div class="project-icon icon-blue">🤖</div>
+        <h3>Self-Healing CI/CD Pipeline</h3>
+        <p>Autonomous AI agent using LangGraph + Claude that detects GitHub Actions failures, analyses logs with RAG, and auto-remediates or escalates via MCP server.</p>
+        <div class="project-tags">
+          <span class="project-tag">LangGraph</span><span class="project-tag">Claude API</span><span class="project-tag">MCP Server</span><span class="project-tag">RAG</span><span class="project-tag">GitHub Actions</span>
+        </div>
+      </div>
+
+      <div class="card-3d project-card">
+        <div class="project-icon icon-purple">🔒</div>
+        <h3>Container Vulnerability Remediation</h3>
+        <p>AI agent scans Docker images from JFrog using Trivy/Snyk, auto-fixes Dockerfile vulnerabilities, and raises PRs via GitHub MCP server — zero manual intervention.</p>
+        <div class="project-tags">
+          <span class="project-tag">Docker</span><span class="project-tag">Trivy</span><span class="project-tag">GitHub MCP</span><span class="project-tag">AI Agent</span><span class="project-tag">JFrog</span>
+        </div>
+      </div>
+
+      <div class="card-3d project-card">
+        <div class="project-icon icon-cyan">📑</div>
+        <h3>ADO → GitHub Actions Migrator</h3>
+        <p>AI-driven migration tool with confidence scoring that validates each conversion and re-runs until 90% accuracy is achieved — fully automated pipeline modernization.</p>
+        <div class="project-tags">
+          <span class="project-tag">Azure DevOps</span><span class="project-tag">GitHub Actions</span><span class="project-tag">Gen AI</span><span class="project-tag">YAML</span>
+        </div>
+      </div>
+
+      <div class="card-3d project-card">
+        <div class="project-icon icon-blue">🔍</div>
+        <h3>Multi-Source Semantic Search</h3>
+        <p>Enterprise semantic search across Confluence, SharePoint, and local docs using Python embeddings and vector-based retrieval. Used in production for DevOps knowledge discovery.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span><span class="project-tag">Embeddings</span><span class="project-tag">Vector DB</span><span class="project-tag">Confluence</span><span class="project-tag">SharePoint</span>
+        </div>
+      </div>
+
+      <div class="card-3d project-card">
+        <div class="project-icon icon-purple">🏗️</div>
+        <h3>AI Terraform Code Generator</h3>
+        <p>User inputs → LLM generates Terraform IaC → auto commits to GitHub → pipeline validates. End-to-end infrastructure provisioning with zero manual coding.</p>
+        <div class="project-tags">
+          <span class="project-tag">Terraform</span><span class="project-tag">LLM</span><span class="project-tag">GitHub</span><span class="project-tag">IaC</span><span class="project-tag">FastAPI</span>
+        </div>
+      </div>
+
+      <div class="card-3d project-card">
+        <div class="project-icon icon-cyan">💬</div>
+        <h3>Confluence RAG Chatbot</h3>
+        <p>DevOps troubleshooting chatbot integrating Confluence docs via RAG, similarity scoring, image-based retrieval, and AI generation for unmatched queries.</p>
+        <div class="project-tags">
+          <span class="project-tag">RAG</span><span class="project-tag">LangChain</span><span class="project-tag">Confluence</span><span class="project-tag">Streamlit</span><span class="project-tag">Gemini</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HACKATHONS -->
+<section id="hackathons">
+  <div class="container reveal">
+    <p class="section-label">Competitions</p>
+    <h2 class="section-title">Hackathons</h2>
+    <div class="divider"></div>
+    <div class="hackathons-grid">
+      <div class="hackathon-card">
+        <div class="hack-org">AWS</div>
+        <div class="hack-title">Gen AI Driveathon</div>
+        <div class="hack-desc">Built a Self-Healing CI/CD Pipeline agent that autonomously detects failures, analyses logs, and remediates issues.</div>
+      </div>
+      <div class="hackathon-card">
+        <div class="hack-org">Anthropic</div>
+        <div class="hack-title">Anthropic Hackathon</div>
+        <div class="hack-desc">Developed a Regulatory Change Management System to track, analyse, and summarize regulatory updates using Claude.</div>
+      </div>
+      <div class="hackathon-card">
+        <div class="hack-org">Microsoft</div>
+        <div class="hack-title">Copilot Innovation Jam</div>
+        <div class="hack-desc">Built an HR Recruitment Assistant Agent in Copilot Studio — analyses resumes, ranks candidates, and suggests shortlists.</div>
+      </div>
+      <div class="hackathon-card">
+        <div class="hack-org">Cursor AI</div>
+        <div class="hack-title">Cursor AI Hackathon</div>
+        <div class="hack-desc">Created a Migration Assessment and Validation tool using AI to evaluate and verify code migration accuracy in Cursor IDE.</div>
+      </div>
+      <div class="hackathon-card">
+        <div class="hack-org">Google</div>
+        <div class="hack-title">Gemini CLI Buildathon</div>
+        <div class="hack-desc">In Progress — building a project leveraging Gemini CLI for developer productivity automation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section style="background:rgba(10,22,40,0.6)">
+  <div class="container reveal">
+    <p class="section-label">Credentials</p>
+    <h2 class="section-title">Certifications</h2>
+    <div class="divider"></div>
+    <div class="certs-grid">
+      <div class="cert-card card-3d">
+        <div class="cert-icon">🧠</div>
+        <div class="cert-name">Claude Certified Architect</div>
+        <div class="cert-issuer">Anthropic · Foundations</div>
+      </div>
+      <div class="cert-card card-3d">
+        <div class="cert-icon">🐙</div>
+        <div class="cert-name">Microsoft GitHub Copilot</div>
+        <div class="cert-issuer">Microsoft · Valid Nov 2027</div>
+      </div>
+      <div class="cert-card card-3d">
+        <div class="cert-icon">⚡</div>
+        <div class="cert-name">Infosys Certified GenAI Professional</div>
+        <div class="cert-issuer">Infosys</div>
+      </div>
+      <div class="cert-card card-3d">
+        <div class="cert-icon">🐍</div>
+        <div class="cert-name">Infosys Certified Python Programmer</div>
+        <div class="cert-issuer">Infosys</div>
+      </div>
+      <div class="cert-card card-3d">
+        <div class="cert-icon">🤖</div>
+        <div class="cert-name">Infosys Certified Agentic AI</div>
+        <div class="cert-issuer">Infosys</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section>
+  <div class="container reveal">
+    <p class="section-label">Recognition</p>
+    <h2 class="section-title">Honors & Awards</h2>
+    <div class="divider"></div>
+    <div class="awards-list">
+      <div class="award-item"><span class="award-emoji">🏆</span><div><div class="award-name">ENG - RISE Award for Best Team BTN</div><div class="award-date">March 2026</div></div></div>
+      <div class="award-item"><span class="award-emoji">⭐</span><div><div class="award-name">Certificate of Appreciation - INSTA Award</div><div class="award-date">March 2026</div></div></div>
+      <div class="award-item"><span class="award-emoji">🏅</span><div><div class="award-name">Certificate of Appreciation - INSTA Award</div><div class="award-date">December 2025</div></div></div>
+      <div class="award-item"><span class="award-emoji">🥇</span><div><div class="award-name">Best Team BTN - Unit RISE Award</div><div class="award-date">September 2025</div></div></div>
+      <div class="award-item"><span class="award-emoji">⭐</span><div><div class="award-name">Certificate of Appreciation - INSTA Award</div><div class="award-date">September 2025</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section style="background:rgba(10,22,40,0.6)">
+  <div class="container reveal">
+    <p class="section-label">Academic Background</p>
+    <h2 class="section-title">Education</h2>
+    <div class="divider"></div>
+    <div class="card-3d edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-uni">Visvesvaraya Technological University (VTU)</div>
+        <div class="edu-deg">Bachelor of Engineering · Bangalore, Karnataka · 2018 – 2022</div>
+        <span class="edu-cgpa">CGPA: 8.0 / 10</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container reveal">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Contact</h2>
+    <div class="divider"></div>
+    <p style="color:var(--muted);margin-bottom:2rem;line-height:1.7">Open to AI/ML and GenAI roles in Bhubaneswar, Kolkata, Hyderabad, and Bangalore. 90-day notice period.</p>
+    <div class="contact-grid">
+      <a href="mailto:bkb1662000@gmail.com" class="contact-card">
+        <span class="contact-icon">📧</span>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val">bkb1662000@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/bal-krishna-bharti" target="_blank" class="contact-card">
+        <span class="contact-icon">💼</span>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-val">Bal Krishna Bharti</div>
+        </div>
+      </a>
+      <a href="tel:+917461920628" class="contact-card">
+        <span class="contact-icon">📞</span>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-val">+91 7461920628</div>
+        </div>
+      </a>
+      <a href="https://github.com" target="_blank" class="contact-card">
+        <span class="contact-icon">🐙</span>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-val">View Projects</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with ❤️ by Bal Krishna Bharti · AI Engineer · 2026</p>
+</footer>
+
+<script>
+// Particles
+const pc = document.getElementById('particles');
+for(let i=0;i<25;i++){
+  const p = document.createElement('div');
+  p.className='particle';
+  const size = Math.random()*3+1;
+  const hue = Math.random()>0.5?'79,142,247':'6,182,212';
+  p.style.cssText=`width:${size}px;height:${size}px;background:rgba(${hue},0.4);left:${Math.random()*100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*15}s;--drift:${(Math.random()-0.5)*200}px`;
+  pc.appendChild(p);
+}
+
+// Scroll reveal
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// 3D card tilt
+document.querySelectorAll('.card-3d').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5;
+    const y=(e.clientY-r.top)/r.height-0.5;
+    card.style.transform=`perspective(1000px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px)`;
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='';
+  });
+});
+</script>
+</body>
+</html>
