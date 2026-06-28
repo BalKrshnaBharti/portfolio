@@ -54,7 +54,11 @@ section{padding:5rem 2rem}
 
 /* 3D CARDS */
 .card-3d{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:1.5rem;backdrop-filter:blur(10px);transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;cursor:default}
-.card-3d:hover{transform:translateY(-6px) rotateX(2deg);box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 0 1px rgba(79,142,247,0.15);border-color:rgba(79,142,247,0.3)}
+.card-3d:hover{
+  transform:translateY(-8px) rotateX(2deg);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(79,142,247,0.2), 0 0 60px rgba(79,142,247,0.1);
+  border-color:rgba(79,142,247,0.5);
+}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
@@ -152,8 +156,9 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
 @keyframes float{0%{transform:translateY(100vh) translateX(0) scale(0);opacity:0}10%{opacity:1}90%{opacity:0.3}100%{transform:translateY(-10vh) translateX(var(--drift)) scale(1);opacity:0}}
 
 /* SCROLL REVEAL */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s,transform 0.6s}
-.reveal.visible{opacity:1;transform:none}
+/* naya */
+.reveal{opacity:0;transform:translateY(50px) scale(0.97);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0) scale(1)}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -161,4 +166,61 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
   .nav-links{display:none}
   .stats-row{grid-template-columns:1fr 1fr}
   .hero-btns{flex-direction:column;align-items:center}
+}
+
+/* Animated Gradient Background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: 
+    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(79,142,247,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 80%, rgba(124,58,237,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 60% 40%, rgba(6,182,212,0.06) 0%, transparent 50%);
+  animation: bgShift 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes bgShift {
+  0%   { opacity: 1; transform: scale(1) rotate(0deg); }
+  50%  { opacity: 0.7; transform: scale(1.1) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1.05) rotate(-1deg); }
+}
+
+/* Scroll Progress Bar */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent3));
+  z-index: 999;
+  transition: width 0.1s;
+}
+
+.cursor {
+  animation: blink 0.8s infinite;
+  color: var(--accent);
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Stagger children inside revealed sections */
+.reveal.visible .card-3d,
+.reveal.visible .hackathon-card,
+.reveal.visible .cert-card,
+.reveal.visible .award-item {
+  animation: popIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+}
+.reveal.visible .card-3d:nth-child(1) { animation-delay: 0.05s; }
+.reveal.visible .card-3d:nth-child(2) { animation-delay: 0.1s; }
+.reveal.visible .card-3d:nth-child(3) { animation-delay: 0.15s; }
+.reveal.visible .card-3d:nth-child(4) { animation-delay: 0.2s; }
+
+@keyframes popIn {
+  from { opacity:0; transform: translateY(20px) scale(0.95); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
 }

@@ -10,6 +10,7 @@
 <body>
 
 <div class="particles" id="particles"></div>
+<div id="progress-bar"></div>
 
 <!-- NAV -->
 <nav>
@@ -98,7 +99,7 @@ document.title = `${D.name} | AI Engineer`;
 document.getElementById('hero-content').innerHTML = `
   ${D.available ? '<div class="hero-badge">⚡ Available for new opportunities</div>' : ''}
   <h1>${D.name.split(' ').slice(0,-1).join(' ')} <span>${D.name.split(' ').slice(-1)}</span></h1>
-  <p class="hero-sub">${D.title}</p>
+  <p class="hero-sub"><span id="typing-text"></span><span class="cursor">|</span></p>
   <p class="hero-tagline">${D.tagline}</p>
   <div class="hero-btns">
     <a href="#experience" class="btn-primary">View My Work</a>
@@ -116,7 +117,7 @@ document.getElementById('about-section').innerHTML = `
   <div class="divider"></div>
   <div class="about-grid">
     <div class="about-left">
-      <div class="about-avatar">${D.initials}</div>
+      <img src="photo.jpg" class="about-avatar" style="object-fit:cover;" alt="Bal Krishna">
       <div class="stats-row">
         ${D.stats.map(s=>`
           <div class="stat-card">

@@ -9,7 +9,13 @@ const PORTFOLIO = {
   // ----------------------------------------------------------
   name:       "Bal Krishna Bharti",
   initials:   "BK",
-  title:      "AI Engineer · Agentic AI · GenAI · DevOps Automation",
+  // title:      "AI Engineer · Agentic AI · GenAI · DevOps Automation",
+  typingTexts: [
+  "AI Engineer",
+  "Agentic AI Developer", 
+  "GenAI Solutions Builder",
+  "DevOps Automation Expert"
+  ],
   location:   "Bhubaneswar, Odisha",
   phone:      "+91 7461920628",
   email:      "bkb1662000@gmail.com",
